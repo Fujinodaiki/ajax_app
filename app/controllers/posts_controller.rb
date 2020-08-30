@@ -1,12 +1,12 @@
 class PostsController < ApplicationController
+
   def index
-    @posts = Post.all  #１番目のレコードを変数に代入
+    @posts = Post.all.order(id: "DESC")
   end
-
-  def new
-  end
-
+ 
   def create
     Post.create(content: params[:content])
+    redirect_to action: :index
   end
-end
+ 
+ end
